@@ -1,0 +1,55 @@
+// Sine
+// Brendan Berg
+// 2 March, 2023
+
+Number SinApprox X
+{
+    Value (X*(200-X)/98)
+}
+
+Number CosApprox X
+{
+    Value (100-(X*X)/69)
+}
+
+Number Sin X
+{
+    Set X (X%360)
+
+    Smaller? X 180
+    {
+        Smaller? X 90
+        {
+            Smaller? X 45
+            {
+                Set v <SinApprox X>
+            }
+
+            NotSmaller? X 45
+            {
+                Set v <CosApprox (90-X)>
+            }
+        }
+
+        NotSmaller? X 90
+        {
+            Smaller? X 135
+            {
+                Set v <CosApprox (X-90)>
+            }
+
+            NotSmaller? X 135
+            {
+                Set v <SinApprox (180-X)>
+            }
+        }
+    }
+
+    Value v
+}
+
+Repeat N 0 49
+{
+    Set X (N*2+1)
+    Line X 0 X <Sin (X*18/10)>
+}
