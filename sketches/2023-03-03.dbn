@@ -1,0 +1,77 @@
+// Box
+// Brendan Berg
+// 2 March, 2023
+
+Number SinApprox X
+{
+    Value (X*(200-X)/98)
+}
+
+Number CosApprox X
+{
+    Value (100-(X*X)/69)
+}
+
+Number Sin X
+{
+    Set X (X%360)
+    Set S 1
+
+    NotSmaller? X 180
+    {
+        Set X (X-180)
+        Set S (0-1)
+    }
+
+    Smaller? X 90
+    {
+        Smaller? X 45
+        {
+            Set v <sinapprox X>
+        }
+
+        NotSmaller? X 45
+        {
+            Set v <cosapprox (90-X)>
+        }
+    }
+
+    NotSmaller? X 90
+    {
+        Smaller? X 135
+        {
+            Set v <cosapprox (X-90)>
+        }
+
+        NotSmaller? X 135
+        {
+            Set v <sinapprox (180-X)>
+        }
+    }
+
+    Value (v*S)
+}
+
+Number Cos X
+{
+    Value <sin (X+90)>
+}
+
+Paper 10
+
+Repeat A 0 2
+{
+    Set Vx <cos (120*A)>
+    Set Vy <sin (120*A)>
+    Set Wx (<cos (120*(A+1))>*4/9)
+    Set Wy (<sin (120*(A+1))>*4/9)
+
+    Pen ((A+1)*30)
+    Repeat N 0 9
+    {
+        Set dX (Vx*(N*5)/100)
+        Set dY (Vy*(N*5)/100)
+
+        Line (50+dX) (50+dY) (50+Wx+dX) (50+Wy+dY)
+    }
+}
