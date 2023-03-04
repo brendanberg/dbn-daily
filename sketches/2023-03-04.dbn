@@ -1,0 +1,35 @@
+// Spring
+// Brendan Berg
+// 4 March 2023
+
+NoRefresh 
+
+Paper 0
+Set Max 50
+
+Forever 
+{
+    Repeat A 2 Max
+    {
+        Paper 0
+
+        Repeat N 0 (A-1)
+        {
+            Line (100*N/A) (N%2*100) (100*(N+1)/A) (100-(N%2*100))
+        }
+
+        Refresh 
+    }
+
+    Repeat A Max 2
+    {
+        Paper 0
+
+        Repeat N 0 (A-1)
+        {
+            Line (100*N/A) (N%2*100) (100*(N+1)/A) (100-(N%2*100))
+        }
+
+        Refresh 
+    }
+}
