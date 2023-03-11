@@ -1,0 +1,28 @@
+// Robot
+// Brendan Berg
+// 6 March 2023
+
+Paper 100
+Pen 0
+
+Command Rect x0 y0 x1 y1
+{
+    Line x0 y0 x1 y0
+    Line x0 y0 x0 y1
+    Line x1 y0 x1 y1
+    Line x0 y1 x1 y1
+}
+
+Rect 15 20 85 80 // Face
+Line 50 80 49 42 // Nose
+Rect 35 60 38 63 // Eye
+Rect 62 58 65 61 // Eye
+Line 24 38 80 38 // Mouth
+Line 20 29 80 32 // Mouth
+Line 23 22 24 36 // Teeth
+Line 30 20 30 36 // Teeth
+Line 40 19 39 39 // Teeth
+Line 50 17 51 36 // Teeth
+Line 60 18 60 36 // Teeth
+Line 69 20 70 36 // Teeth
+Line 76 16 78 37 // Teeth
