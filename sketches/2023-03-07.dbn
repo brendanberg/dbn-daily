@@ -1,0 +1,11 @@
+// Shadow
+// Brendan Berg
+// 7 March 2023
+
+Repeat X 0 100
+{
+    Repeat Y 0 100
+    {
+        Set [X Y] ((X + 1) * 60 / (Y + 1))
+    }
+}
