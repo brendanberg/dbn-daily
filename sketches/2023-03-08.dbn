@@ -1,0 +1,414 @@
+// Alphabet
+// Brendan Berg
+// 8 March 2023
+
+Set <Array 1> 4
+Set <Array 2> 76
+
+Command Margin
+{
+    NotSmaller? <Array 1> 85
+    {
+        Set <Array 2> (<Array 2>-24)
+        Set <Array 1> 4
+    }
+}
+
+Command A
+{
+    Margin 
+    Set X <Array 1>
+    Set Y <Array 2>
+
+    Line X Y (X+5) (Y+20)
+    Line (X+5) (Y+20) (X+10) Y
+    Line (X+3) (Y+10) (X+8) (Y+10)
+
+    Set <Array 1> (X+14)
+}
+
+Command B
+{
+    Margin 
+    Set X <Array 1>
+    Set Y <Array 2>
+
+    Line X Y X (Y+20)
+    Line X (Y+20) (X+3) (Y+20)
+    Line (X+4) (Y+20) (X+6) (Y+15)
+    Line (X+4) (Y+10) (X+6) (Y+15)
+    Line X (Y+10) (X+6) (Y+10)
+
+    Line (X+6) (Y+10) (X+8) (Y+5)
+    Line (X+6) Y (X+8) (Y+5)
+    Line X Y (X+6) Y
+    Set <Array 1> (X+12)
+}
+
+Command C
+{
+    Margin 
+    Set X <Array 1>
+    Set Y <Array 2>
+
+    Line X (Y+5) X (Y+15)
+    Line X (Y+15) (X+3) (Y+20)
+    Line X (Y+5) (X+3) Y
+    Line (X+3) Y (X+6) Y
+    Line (X+3) (Y+20) (X+6) (Y+20)
+    Line (X+6) (Y+20) (X+8) (Y+18)
+    Line (X+6) Y (X+8) (Y+2)
+
+    Set <Array 1> (X+13)
+}
+
+Command D
+{
+    Margin 
+    Set X <Array 1>
+    Set Y <Array 2>
+
+    Line X Y X (Y+20)
+    Line X (Y+20) (X+4) (Y+20)
+    Line (X+4) (Y+20) (X+8) (Y+13)
+    Line (X+8) (Y+13) (X+8) (Y+5)
+    Line (X+5) Y (X+8) (Y+5)
+    Line X Y (X+5) Y
+    Set <Array 1> (X+12)
+}
+
+Command E
+{
+    Margin 
+    Set X <Array 1>
+    Set Y <Array 2>
+
+    Line X Y X (Y+20)
+    Line X Y (X+8) Y
+    Line X (Y+20) (X+8) (Y+20)
+    Line X (Y+11) (X+6) (Y+11)
+    Set <Array 1> (X+12)
+}
+
+Command F
+{
+    Margin 
+    Set X <Array 1>
+    Set Y <Array 2>
+    Line X Y X (Y+20)
+    Line X (Y+20) (X+8) (Y+20)
+    Line X (Y+11) (X+6) (Y+11)
+
+    Set <Array 1> (X+12)
+}
+
+Command G
+{
+    Margin 
+    Set X <Array 1>
+    Set Y <Array 2>
+
+    Line X (Y+5) X (Y+15)
+    Line X (Y+15) (X+3) (Y+20)
+    Line X (Y+5) (X+3) Y
+    Line (X+3) Y (X+6) Y
+    Line (X+3) (Y+20) (X+6) (Y+20)
+    Line (X+6) (Y+20) (X+8) (Y+18)
+    Line (X+6) Y (X+9) (Y+2)
+    Line (X+9) (Y+2) (X+9) (Y+8)
+    Line (X+7) (Y+8) (X+9) (Y+8)
+
+    Set <Array 1> (X+12)
+}
+
+Command H
+{
+    Margin 
+    Set X <Array 1>
+    Set Y <Array 2>
+    Line X Y X (Y+20)
+    Line (X+8) Y (X+8) (Y+20)
+    Line X (Y+11) (X+8) (Y+11)
+
+    Set <Array 1> (X+12)
+}
+
+Command I
+{
+    Margin 
+    Set X <Array 1>
+    Set Y <Array 2>
+    Line (X+3) Y (X+3) (Y+20)
+    Line X Y (X+6) Y
+    Line X (Y+20) (X+6) (Y+20)
+
+    Set <Array 1> (X+10)
+}
+
+Command J
+{
+    Margin 
+    Set X <Array 1>
+    Set Y <Array 2>
+
+    Line (X+8) (Y+3) (X+8) (Y+20)
+    Line (X+5) (Y+20) (X+8) (Y+20)
+    Line (X+2) Y (X+6) Y
+    Line (X+6) Y (X+8) (Y+3)
+    Line X (Y+3) (X+2) Y
+
+    Set <Array 1> (X+12)
+}
+
+Command K
+{
+    Margin 
+    Set X <Array 1>
+    Set Y <Array 2>
+    Line X Y X (Y+20)
+    Line (X+4) (Y+13) (X+10) Y
+    Line X (Y+8) (X+9) (Y+20)
+
+    Set <Array 1> (X+14)
+}
+
+Command L
+{
+    Margin 
+    Set X <Array 1>
+    Set Y <Array 2>
+    Line X Y X (Y+20)
+    Line X Y (X+8) Y
+
+    Set <Array 1> (X+12)
+}
+
+Command M
+{
+    Margin 
+    Set X <Array 1>
+    Set Y <Array 2>
+    Line X Y X (Y+20)
+    Line (X+12) Y (X+12) (Y+20)
+    Line X (Y+20) (X+6) (Y+8)
+    Line (X+12) (Y+20) (X+6) (Y+8)
+
+    Set <Array 1> (X+16)
+}
+
+Command N
+{
+    Margin 
+    Set X <Array 1>
+    Set Y <Array 2>
+    Line X Y X (Y+20)
+    Line (X+10) Y (X+10) (Y+20)
+    Line X (Y+20) (X+10) Y
+
+    Set <Array 1> (X+12)
+}
+
+Command O
+{
+    Margin 
+    Set X <Array 1>
+    Set Y <Array 2>
+
+    Line X (Y+5) X (Y+15)
+    Line X (Y+15) (X+3) (Y+20)
+    Line X (Y+5) (X+3) Y
+    Line (X+3) Y (X+6) Y
+    Line (X+3) (Y+20) (X+6) (Y+20)
+    Line (X+6) (Y+20) (X+9) (Y+15)
+    Line (X+6) Y (X+9) (Y+5)
+
+    Line (X+9) (Y+5) (X+9) (Y+15)
+
+    Set <Array 1> (X+13)
+}
+
+Command P
+{
+    Margin 
+    Set X <Array 1>
+    Set Y <Array 2>
+
+    Line X Y X (Y+20)
+    Line X (Y+20) (X+6) (Y+20)
+    Line (X+6) (Y+20) (X+8) (Y+15)
+    Line (X+6) (Y+10) (X+8) (Y+15)
+    Line X (Y+10) (X+6) (Y+10)
+
+    Set <Array 1> (X+12)
+}
+
+Command Q
+{
+    Margin 
+    Set X <Array 1>
+    Set Y <Array 2>
+
+    Line X (Y+5) X (Y+15)
+    Line X (Y+15) (X+3) (Y+20)
+    Line X (Y+5) (X+3) Y
+    Line (X+3) Y (X+6) Y
+    Line (X+3) (Y+20) (X+6) (Y+20)
+    Line (X+6) (Y+20) (X+9) (Y+15)
+    Line (X+6) Y (X+9) (Y+5)
+    Line (X+9) (Y+5) (X+9) (Y+15)
+    Line (X+6) (Y+7) (X+9) Y
+
+    Set <Array 1> (X+13)
+}
+
+Command R
+{
+    Margin 
+    Set X <Array 1>
+    Set Y <Array 2>
+
+    Line X Y X (Y+20)
+    Line X (Y+20) (X+6) (Y+20)
+    Line (X+6) (Y+20) (X+8) (Y+15)
+    Line (X+6) (Y+10) (X+8) (Y+15)
+    Line X (Y+10) (X+6) (Y+10)
+    Line (X+4) (Y+10) (X+8) Y
+
+    Set <Array 1> (X+12)
+}
+
+Command S
+{
+    Margin 
+    Set X <Array 1>
+    Set Y <Array 2>
+
+    Line X (Y+13) X (Y+17)
+    Line (X+3) (Y+20) (X+6) (Y+20)
+    Line X (Y+17) (X+3) (Y+20)
+    Line X (Y+2) (X+2) Y
+    Line X (Y+13) (X+3) (Y+10)
+    Line (X+3) (Y+10) (X+5) (Y+10)
+    Line (X+5) (Y+10) (X+8) (Y+7)
+    Line (X+8) (Y+2) (X+8) (Y+7)
+    Line (X+2) Y (X+5) Y
+    Line (X+6) (Y+20) (X+8) (Y+18)
+    Line (X+5) Y (X+8) (Y+2)
+
+    Set <Array 1> (X+11)
+}
+
+Command T
+{
+    Margin 
+    Set X <Array 1>
+    Set Y <Array 2>
+    Line (X+4) Y (X+4) (Y+20)
+    Line X (Y+20) (X+8) (Y+20)
+
+    Set <Array 1> (X+10)
+}
+
+Command U
+{
+    Margin 
+    Set X <Array 1>
+    Set Y <Array 2>
+
+    Line X (Y+5) X (Y+20)
+    Line X (Y+5) (X+3) Y
+    Line (X+3) Y (X+6) Y
+    Line (X+6) Y (X+9) (Y+5)
+    Line (X+9) (Y+5) (X+9) (Y+20)
+
+    Set <Array 1> (X+13)
+}
+
+Command V
+{
+    Margin 
+    Set X <Array 1>
+    Set Y <Array 2>
+    Line X (Y+20) (X+6) Y
+    Line (X+12) (Y+20) (X+6) Y
+
+    Set <Array 1> (X+16)
+}
+
+
+Command W
+{
+    Margin 
+    Set X <Array 1>
+    Set Y <Array 2>
+    Line X (Y+20) (X+6) Y
+    Line (X+12) (Y+20) (X+6) Y
+
+    Line (X+6) (Y+20) (X+12) Y
+    Line (X+18) (Y+20) (X+12) Y
+
+    Set <Array 1> (X+22)
+}
+
+Command X
+{
+    Margin 
+    Set X <Array 1>
+    Set Y <Array 2>
+
+    Line X (Y+20) (X+10) Y
+    Line X Y (X+10) (Y+20)
+
+    Set <Array 1> (X+14)
+}
+
+Command Y
+{
+    Margin 
+    Set X <Array 1>
+    Set Y <Array 2>
+    Line X (Y+20) (X+6) (Y+11)
+    Line (X+6) Y (X+6) (Y+11)
+    Line (X+6) (Y+11) (X+12) (Y+20)
+
+    Set <Array 1> (X+16)
+}
+
+Command Z
+{
+    Margin 
+    Set X <Array 1>
+    Set Y <Array 2>
+    Line X Y (X+10) Y
+    Line X Y (X+10) (Y+20)
+    Line X (Y+20) (X+10) (Y+20)
+
+    Set <Array 1> (X+12)
+}
+
+A 
+B 
+C
+D
+E
+F
+G
+H
+I
+J
+K
+L
+M
+N
+O
+P
+Q
+R
+S
+T
+U
+V
+W
+X
+Y
+Z
