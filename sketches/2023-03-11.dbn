@@ -1,0 +1,33 @@
+// Squeegee
+// Brendan Berg
+// 11 March 2023
+
+NoRefresh
+Set bg 90
+Paper bg
+
+Forever 
+{
+    Refresh 
+    Set [<Mouse 1> <Mouse 2>] 0
+
+    Repeat Y 100 0
+    {
+        Repeat X 0 100
+        {
+            Set C0 [X Y]
+
+            Same? Y 100
+            {
+                Set C1 bg
+            }
+
+            NotSame? Y 100
+            {
+                Set C1 [X (Y+1)]
+            }
+
+            Set [X Y] ((C0*2+C1*3)/5)
+        }
+    }
+}
