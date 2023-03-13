@@ -1,0 +1,45 @@
+// Weave
+// Brendan Berg
+// 12 March 2023
+
+Paper 73 75 85
+
+Set Rh 92
+Set Gh 82
+Set Bh 89
+
+Set Rv 72
+Set Gv 82
+Set Bv 87
+
+Repeat Y 20 0
+{
+    Pen Rh Gh Bh
+    Line 0 (Y*5) 100 (Y*5)
+    Line 0 (Y*5+1) 100 (Y*5+1)
+}
+
+Repeat X 0 20
+{
+    Repeat Y 0 20
+    {
+        Same? (X%2) (Y%2)
+        {
+            Pen Rh Gh Bh
+            Line (X*5-3) (Y*5) (X*5+3) (Y*5)
+            Line (X*5-3) (Y*5+1) (X*5+3) (Y*5+1)
+        }
+
+        Pen Rv Gv Bv
+        Line (X*5) (Y*5-3) (X*5) (Y*5+3)
+        Line (X*5-1) (Y*5-3) (X*5-1) (Y*5+3)
+        Line (X*5+1) (Y*5-3) (X*5+1) (Y*5+3)
+
+        NotSame? (X%2) (Y%2)
+        {
+            Pen Rh Gh Bh
+            Line (X*5-3) (Y*5) (X*5+3) (Y*5)
+            Line (X*5-3) (Y*5+1) (X*5+3) (Y*5+1)
+        }
+    }
+}
