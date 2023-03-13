@@ -1,0 +1,33 @@
+// Horizon
+// Brendan Berg
+// 10 March 2023
+
+Paper 0
+Field 0 0 100 80 3
+
+Set C 5
+Set Y 80
+Set dY 2
+
+Repeat Q 100 81
+{
+    Pen (Q-81)
+    Line 0 Q 100 Q
+}
+
+Repeat Q 0 8
+{
+    Repeat X 0 (50/dY)
+    {
+
+        Pen 0
+        Line (X*dY*2+10) (Y-1) (X*dY*2+(dY/2)+10) (Y-1)
+
+        Pen C
+        Line (X*dY*2) Y (X*dY*2+(dY/2)) Y
+    }
+
+    Set Y (Y-dY)
+    Set dY (dY*17/11)
+    Set C (C+5)
+}
