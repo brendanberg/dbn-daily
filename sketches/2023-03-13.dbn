@@ -1,0 +1,53 @@
+// Moiré
+// Brendan Berg
+// 13 March 2023
+
+NoRefresh 
+
+Command Circle X Y R C
+{
+    Set J R
+    Set E (1-R)
+
+    Repeat I 0 (R*3/4)
+    {
+        Set [(X+I) (Y+J)] C
+        Set [(X-I) (Y+J)] C
+        Set [(X+I) (Y-J)] C
+        Set [(X-I) (Y-J)] C
+        Set [(X+J) (Y+I)] C
+        Set [(X-J) (Y+I)] C
+        Set [(X+J) (Y-I)] C
+        Set [(X-J) (Y-I)] C
+
+        Smaller? E 0
+        {
+            Set EE (E+(I*2+3))
+        }
+
+        NotSmaller? E 0
+        {
+            Set EE (E+((I-J)*2+5))
+            Set J (J-1)
+        }
+
+        Set E EE
+    }
+}
+
+Repeat S (0-50) 50
+{
+    Paper 0
+    Pause 10
+
+    Repeat R 0 47
+    {
+        Circle (50-S) (50-S) (R*3) 100
+    }
+
+    Repeat R 0 47
+    {
+        Circle (50+S) (50+S) (R*3) 100
+    }
+    Refresh 
+}
