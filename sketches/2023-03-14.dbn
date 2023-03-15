@@ -1,0 +1,265 @@
+// Flurries
+// Brendan Berg
+// 14 March 2023
+
+Paper 10
+NoRefresh 
+
+Command SnowXS X Y C
+{
+    Set [X Y] C
+
+    Repeat I 0 1
+    {
+        Set Sx (I*2-1)
+
+        Repeat J 0 1
+        {
+            Set Sy (J*2-1)
+            Set [(X+1*Sx) (Y+1*Sy)] C
+            Set [(X+2*Sx) (Y+1*Sy)] C
+            Set [(X+1*Sx) (Y+2*Sy)] C
+        }
+    }
+}
+
+Command SnowS X Y C
+{
+    Set [X Y] C
+    Set [(X-3) (Y-1)] C
+    Set [(X-3) (Y+1)] C
+    Set [(X-2) Y] C
+
+    Set [(X+3) (Y-1)] C
+    Set [(X+3) (Y+1)] C
+    Set [(X+2) Y] C
+
+    Set [(X-1) (Y-3)] C
+    Set [(X+1) (Y-3)] C
+    Set [X (Y-2)] C
+    Set [(X-1) (Y-3)] C
+    Set [(X+1) (Y-3)] C
+    Set [X (Y-2)] C
+
+    Set [(X-1) (Y+3)] C
+    Set [(X+1) (Y+3)] C
+    Set [X (Y+2)] C
+}
+
+Command SnowM X Y C
+{
+    Set [(X-1) Y] C
+    Set [X Y] C
+    Set [(X+1) Y] C
+
+    Repeat I 0 1
+    {
+        Set Sy (I*2-1)
+        Set [X (Y+1*Sy)] C
+        Set [X (Y+2*Sy)] C
+        Set [X (Y+3*Sy)] C
+
+        Repeat J 0 1
+        {
+            Set Sx (J*2-1)
+            Set [(X+1*Sx) (Y+4*Sy)] C
+            Set [(X+2*Sx) (Y+1*Sy)] C
+            Set [(X+3*Sx) (Y+2*Sy)] C
+            Set [(X+3*Sx) (Y+3*Sy)] C
+            Set [(X+4*Sx) (Y+2*Sy)] C
+        }
+    }
+}
+
+Command SnowL X Y C
+{
+    Set [X Y] C
+
+    Repeat I 0 1
+    {
+        Set Sy (I*2-1)
+        Set [X (Y+1*Sy)] C
+        Set [X (Y+2*Sy)] C
+        Set [(X+1*Sy) Y] C
+        Set [(X+2*Sy) Y] C
+
+        Set [(X+2*Sy) (Y+2*Sy)] C
+        Set [(X+3*Sy) (Y+3*Sy)] C
+        Set [(X+3*Sy) (Y+4*Sy)] C
+        Set [(X+4*Sy) (Y+3*Sy)] C
+
+        Set [(X-1*Sy) (Y+3*Sy)] C
+        Set [(X-1*Sy) (Y+4*Sy)] C
+        Set [X (Y+5*Sy)] C
+        Set [(X-2*Sy) (Y+5*Sy)] C
+
+        Set [(X+3*Sy) (Y-1*Sy)] C
+        Set [(X+4*Sy) (Y-1*Sy)] C
+        Set [(X+5*Sy) Y] C
+        Set [(X+5*Sy) (Y-2*Sy)] C
+    }
+}
+
+Number SinApprox X
+{
+    Value (X*(200-X)/98)
+}
+
+Number CosApprox X
+{
+    Value (100-(X*X)/69)
+}
+
+Number Sin X
+{
+    Set X (X%360)
+    Set S 1
+
+    NotSmaller? X 180
+    {
+        Set X (X-180)
+        Set S (0-1)
+    }
+
+    Smaller? X 90
+    {
+        Smaller? X 45
+        {
+            Set v <Sinapprox X>
+        }
+
+        NotSmaller? X 45
+        {
+            Set v <Cosapprox (90-X)>
+        }
+    }
+
+    NotSmaller? X 90
+    {
+        Smaller? X 135
+        {
+            Set v <Cosapprox (X-90)>
+        }
+
+        NotSmaller? X 135
+        {
+            Set v <Sinapprox (180-X)>
+        }
+    }
+
+    Value (v*S)
+}
+
+Number Cos X
+{
+    Value <Sin (X+90)>
+}
+
+Number Clamp X
+{
+    Smaller? X 0
+    {
+        Set X (100-((0-X)%100))
+    }
+    Value (X%100)
+}
+
+Number Random
+{
+    Set B 198621
+    Set M 98621
+    Set BL (SEED*B+1)
+    Set SEED (BL%M)
+    Value ((SEED+36000)%36000)
+}
+
+Set SEED <Time 4>
+
+Repeat N 0 19
+{
+    Set <Array (N+1)> (<Random>/36+500)
+}
+
+Repeat N 20 29
+{
+    Set <Array (N+1)> (<Random>/36+500)
+}
+
+Repeat N 30 39
+{
+    Set <Array (N+1)> (<Random>/36+500)
+}
+
+Repeat N 40 49
+{
+    Set <Array (N+1)> (<Random>/36+500)
+}
+
+Set ThetaXS (<Random>/1000)
+Set ThetaS (<Random>/1000)
+Set ThetaM (<Random>/1000)
+Set ThetaL (<Random>/1000)
+
+NoRefresh 
+
+Forever 
+{
+    Pause 3
+    Paper 10
+    Set ThetaXS ((ThetaXS+(<Random>/1000))/2)
+    Set ThetaS ((ThetaS+(<Random>/1000))/2)
+    Set ThetaM ((ThetaM+(<Random>/1000))/2)
+    Set ThetaL ((ThetaL+(<Random>/1000))/2)
+
+    Repeat N 1 10
+    {
+        Set S (<Random>/2)
+        Set dX (<Cos ThetaXS>*S/3600)
+        Set dY (<Sin ThetaXS>*S/3600)
+        Set Ix (N*2-1)
+        Set Iy (N*2)
+        Set <Array Ix> <Clamp ((<Array Ix>*1000+dX)/1000)>
+        Set <Array Iy> <Clamp ((<Array Iy>*1000+dY)/1000)>
+        SnowXS <Array Ix> <Array Iy> 5
+    }
+
+    Repeat N 1 5
+    {
+        Set S <Random>
+        Set dX (<Cos ThetaS>*S/3600)
+        Set dY (<Sin ThetaS>*S/3600)
+
+        Set Ix (N*2+19)
+        Set Iy (N*2+20)
+        Set <Array Ix> <Clamp ((<Array Ix>*1000+dX)/1000)>
+        Set <Array Iy> <Clamp ((<Array Iy>*1000+dY)/1000)>
+        SnowS <Array Ix> <Array Iy> 7
+    }
+
+    Repeat N 1 5
+    {
+        Set S <Random>
+        Set dX (<Cos ThetaM>*S/3600)
+        Set dY (<Sin ThetaM>*S/3600)
+
+        Set Ix (N*2+29)
+        Set Iy (N*2+30)
+        Set <Array Ix> <Clamp ((<Array Ix>*1000+dX)/1000)>
+        Set <Array Iy> <Clamp ((<Array Iy>*1000+dY)/1000)>
+        SnowM <Array Ix> <Array Iy> 0
+    }
+
+    Repeat N 1 5
+    {
+        Set S <Random>
+        Set dX (<Cos ThetaL>*S/3600)
+        Set dY (<Sin ThetaL>*S/3600)
+
+        Set Ix (N*2+39)
+        Set Iy (N*2+40)
+        Set <Array Ix> <Clamp ((<Array Ix>*1000+dX)/1000)>
+        Set <Array Iy> <Clamp ((<Array Iy>*1000+dY)/1000)>
+        SnowL <Array Ix> <Array Iy> 3
+    }
+    Refresh 
+}
