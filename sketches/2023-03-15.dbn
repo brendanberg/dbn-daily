@@ -1,0 +1,80 @@
+// Struct
+// Brendan Berg
+// 15 March 2023
+
+NoRefresh 
+
+Command Circle X Y R C
+{
+    Set J R
+    Set E (1-R)
+
+    Repeat I 0 (R*3/4)
+    {
+        Set [(X+I) (Y+J)] C
+        Set [(X-I) (Y+J)] C
+        Set [(X+I) (Y-J)] C
+        Set [(X-I) (Y-J)] C
+        Set [(X+J) (Y+I)] C
+        Set [(X-J) (Y+I)] C
+        Set [(X+J) (Y-I)] C
+        Set [(X-J) (Y-I)] C
+
+        Smaller? E 0
+        {
+            Set EE (E+(I*2+3))
+        }
+
+        NotSmaller? E 0
+        {
+            Set EE (E+((I-J)*2+5))
+            Set J (J-1)
+        }
+
+        Set E EE
+    }
+}
+
+Command Square X Y W C
+{
+    Field X Y (X+W) (Y+W) 0
+    Pen C
+    Line X Y (X+W) Y
+    Line X Y X (Y+W)
+    Line (X+W) Y (X+W) (Y+W)
+    Line X (Y+W) (X+W) (Y+W)
+}
+
+Command Plus X Y W C
+{
+    Pen C
+    Set HalfW (W/2)
+    Line (X-HalfW) Y (X+HalfW) Y
+    Line X (Y-HalfW) X (Y+HalfW)
+}
+
+Paper 5
+
+Repeat X 0 7
+{
+    Repeat Y 0 7
+    {
+        Circle (X*17+5) (Y*17+5) 2 30
+    }
+}
+
+Repeat X 0 9
+{
+    Repeat Y 0 9
+    {
+        Plus (X*10+5) (Y*10+5) 2 80
+    }
+}
+
+Repeat X 0 8
+{
+    Repeat Y 0 8
+    {
+        Square (X*14+6) (Y*14+6) 4 50
+    }
+}
