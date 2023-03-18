@@ -1,0 +1,25 @@
+// Tangrams
+// Brendan Berg
+// 16 March 2023
+
+Paper 5
+Pen 100
+
+Line 0 0 0 100
+Line 0 0 100 0
+Line 100 0 100 100
+Line 0 100 100 100
+
+Line 0 100 100 0
+Line 1 100 100 1
+
+Line 50 100 100 50
+Line 51 100 100 51
+
+Line 100 50 75 25
+Line 100 51 75 26
+
+Line 0 0 75 75
+Line 1 0 76 75
+
+Line 25 75 75 75
