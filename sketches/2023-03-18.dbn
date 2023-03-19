@@ -1,0 +1,68 @@
+// Maze
+// Brendan Berg
+// 18 March 2023
+
+Paper 100
+NoRefresh
+
+Number Random
+{
+    Set B 198621
+    Set M 98621
+    Set BL (SEED*B+1)
+    Set SEED (BL%M)
+    Smaller? SEED 0
+    {
+        Set SEED (0-SEED)
+    }
+    Value (SEED%21)
+}
+
+Set SEED <Time 4>
+
+Repeat Y 1 24
+{
+    Pen 0
+    Line 3 (Y*4) 97 (Y*4)
+    Line 3 (Y*4+1) 97 (Y*4+1)
+    
+    Repeat N 0 (5+(Y%2))
+    {
+        Set R ((<Random>*4)+10)
+        Set [(R) (Y*4)] 100
+        Set [(R) (Y*4+1)] 100
+        Set [(R+1) (Y*4)] 100
+        Set [(R+1) (Y*4+1)] 100
+    
+        Set T <Random>
+
+        Repeat X 0 99
+        {
+            Set Edge ([(X+1) (Y*4)]-[X (Y*4)])
+
+            Smaller? T 11
+            {
+                Smaller? Edge 0
+                {
+                    // Falling edge
+                    Set [(R-1) (Y*4+2)] 0
+                    Set [(R-1) (Y*4+3)] 0
+                    Set [(R-2) (Y*4+2)] 0
+                    Set [(R-2) (Y*4+3)] 0
+                }
+            }
+
+            NotSmaller? T 11
+            {
+                NotSmaller? Edge 0
+                {
+                    // Rising edge
+                    Set [(R+2) (Y*4+2)] 0
+                    Set [(R+2) (Y*4+3)] 0
+                    Set [(R+3) (Y*4+2)] 0
+                    Set [(R+3) (Y*4+3)] 0
+                }
+            }
+        }
+    }
+}
