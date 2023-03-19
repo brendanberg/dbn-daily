@@ -1,0 +1,28 @@
+// Magic Eye
+// Brendan Berg
+// 17 March 2023
+
+Paper 100
+
+Number Random
+{
+    Set B 198621
+    Set M 98621
+    Set BL (SEED*B+1)
+    Set SEED (BL%M)
+    Smaller? SEED 0
+    {
+        Set SEED (0-SEED)
+    }
+    Value (SEED%10)
+}
+
+Set SEED <Time 4>
+
+Repeat Y 100 0
+{
+    Repeat X 0 100
+    {
+        Set [X Y] (<Random>*10)
+    }
+}
