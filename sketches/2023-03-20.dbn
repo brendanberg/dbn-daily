@@ -1,0 +1,73 @@
+// Torque
+// Brendan Berg
+// 20 March 2023
+
+Paper 100
+
+Number SinApprox X
+{
+    Value (X*(200-X)/98)
+}
+
+Number CosApprox X
+{
+    Value (100-(X*X)/69)
+}
+
+Number Sin X
+{
+    Set X (X%360)
+    Set S 1
+
+    NotSmaller? X 180
+    {
+        Set X (X-180)
+        Set S (0-1)
+    }
+
+    Smaller? X 90
+    {
+        Smaller? X 45
+        {
+            Set v <SinApprox X>
+        }
+
+        NotSmaller? X 45
+        {
+            Set v <CosApprox (90-X)>
+        }
+    }
+
+    NotSmaller? X 90
+    {
+        Smaller? X 135
+        {
+            Set V <CosApprox (X-90)>
+        }
+
+        NotSmaller? X 135
+        {
+            Set V <SinApprox (180-X)>
+        }
+    }
+
+    Value (V*S)
+}
+
+Number Cos X
+{
+    Value <Sin (X+90)>
+}
+
+Pen 20
+
+Repeat N 0 20
+{
+    Set StartX (<Cos (N*18)>/6+50)
+    Set StartY (<Sin (N*18)>/6+50)
+
+    Set EndX (<Cos ((N+1)*18)>*5/12+50)
+    Set EndY (<Sin ((N+1)*18)>*5/12+50)
+
+    Line StartX StartY EndX EndY
+}
